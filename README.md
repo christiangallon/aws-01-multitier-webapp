@@ -1,5 +1,9 @@
 # AWS Multi-Tier Web App
-Terraform-built AWS demo with a public EC2 Python API, private MySQL RDS, private S3 storage and a CloudWatch CPU alarm.
+Terraform-built AWS demo with a public EC2 Python API, private MySQL RDS, private S3 storage and a CloudWatch CPU alarm.# 
+
+# AWS Architecture
+
+![AWS Multi-Tier Web Application Architecture](docs/architecture.png)
 
 ## Architecture
 Browser → Internet Gateway → public EC2 → private RDS / private S3 via AWS API; CloudWatch monitors EC2 CPU.
