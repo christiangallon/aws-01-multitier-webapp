@@ -1,5 +1,49 @@
-aws_region = "us-east-1"
-instance_type = "t3.micro"
-db_username = "appadmin"
-# Set db_password using TF_VAR_db_password in your shell, never commit it.
-# alert_email = "you@example.com"
+# Copy to terraform.tfvars and adjust. terraform.tfvars is git-ignored.
+
+aws_region   = "us-east-1"
+project_name = "mtwa"
+environment  = "dev"
+
+# Networking
+vpc_cidr             = "10.0.0.0/16"
+availability_zones   = ["us-east-1a", "us-east-1b"]
+public_subnet_cidrs  = ["10.0.1.0/24", "10.0.2.0/24"]
+private_subnet_cidrs = ["10.0.11.0/24", "10.0.12.0/24"]
+
+# Your public IP for bastion SSH (curl -s https://checkip.amazonaws.com)
+admin_cidr = "203.0.113.10/32"
+
+# Compute
+web_instance_type    = "t3.micro"
+app_instance_type    = "t3.small"
+web_min_size         = 1
+web_max_size         = 3
+web_desired_capacity = 1
+app_min_size         = 1
+app_max_size         = 3
+app_desired_capacity = 1
+app_port             = 3000
+
+enable_bastion   = false
+bastion_key_name = ""
+
+enable_alb_access_logs = true
+
+# Database
+db_instance_class        = "db.t3.micro"
+db_allocated_storage     = 20
+db_multi_az              = false # set true for production
+db_name                  = "appdb"
+db_username              = "appadmin"
+db_backup_retention_days = 1
+
+# Storage
+s3_force_destroy = true # set false for production
+
+# Monitoring
+alarm_email        = "you@example.com"
+log_retention_days = 14
+
+extra_tags = {
+  Owner = "christiangallon"
+}

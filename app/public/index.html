@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AWS Multi-Tier Web App</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>AWS Multi-Tier Web App</h1>
+    <p class="subtitle">ALB &rarr; nginx (web tier) &rarr; Node.js (app tier) &rarr; RDS MySQL &middot; monitored by CloudWatch</p>
+    <div id="health" class="health">Checking health&hellip;</div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Add item</h2>
+      <form id="item-form">
+        <input id="name" name="name" placeholder="Name" maxlength="255" required>
+        <textarea id="description" name="description" placeholder="Description (optional)" rows="2"></textarea>
+        <button type="submit">Create</button>
+      </form>
+      <p id="error" class="error" role="alert"></p>
+    </section>
+
+    <section>
+      <h2>Items <button id="refresh" class="secondary" type="button">Refresh</button></h2>
+      <ul id="items"></ul>
+    </section>
+  </main>
+
+  <footer>Static assets served from the S3 static-assets bucket via nginx.</footer>
+  <script src="/app.js"></script>
+</body>
+</html>
